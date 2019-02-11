@@ -6,11 +6,17 @@ using UnityEngine.UI;
 public class ChampionSelectManager : MonoBehaviour
 {
     public GameObject[] Players;
+    public bool[] isPlayerSelected;
     public GameObject[] SelectedPlayers;
     public GameObject SelectionSquare;
     [SerializeField] private int actualPlayerSelected = 0;
 
     private bool leftAxisInUse = false;
+
+    void Awake()
+    {
+        isPlayerSelected = new bool[Players.Length];
+    }
 
     void Update()
     {
@@ -45,19 +51,37 @@ public class ChampionSelectManager : MonoBehaviour
 
         if (Input.GetButtonDown("A"))
         {
-            
             var testActive = false;
+            
             for (int i = 0; i < SelectedPlayers.Length; i++)
             {
-                if (!SelectedPlayers[i].activeInHierarchy && !testActive)
+                if (!SelectedPlayers[i].activeInHierarchy && !testActive && !isPlayerSelected[actualPlayerSelected])
                 {
-                    print("oui");
                     testActive = true;
-                    
+                    isPlayerSelected[actualPlayerSelected] = true;
+                    Players[actualPlayerSelected].GetComponent<CharacterInfo>().usedImage.SetActive(true);
+
                     SelectedPlayers[i].GetComponent<Image>().sprite = Players[actualPlayerSelected].GetComponent<CharacterInfo>().character.CharacterSprite;
                     SelectedPlayers[i].transform.GetChild(0).GetComponent<Text>().text = Players[actualPlayerSelected].GetComponent<CharacterInfo>().character.Name;
                     SelectedPlayers[i].SetActive(true);
                 }
+            }
+        }
+
+        if (Input.GetButtonDown("B"))
+        {
+            for (int i = 0; i < isPlayerSelected.Length; i++)
+            {
+                if (isPlayerSelected[i])
+                {
+                    Players[i].GetComponent<CharacterInfo>().usedImage.SetActive(false);
+                    isPlayerSelected[i] = false;
+                }
+            }
+
+            for (int i = 0; i < SelectedPlayers.Length; i++)
+            {
+                SelectedPlayers[i].SetActive(false);
             }
         }
     }
