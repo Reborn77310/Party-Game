@@ -20,7 +20,7 @@ public class Perso : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-	    var horizontal = Input.GetAxis("Horizontal");
+	    var horizontal = Input.GetAxis("L_XAxis");
 	    if (Mathf.Abs(horizontal) > 0.2f)
 	    {
             velocity.x = Speed * Time.deltaTime * horizontal;
