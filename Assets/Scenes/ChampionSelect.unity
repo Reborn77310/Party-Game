@@ -1213,7 +1213,7 @@ GameObject:
   - component: {fileID: 823358237}
   - component: {fileID: 823358239}
   m_Layer: 5
-  m_Name: Perso9
+  m_Name: Perso8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1300,7 +1300,7 @@ GameObject:
   - component: {fileID: 827769741}
   - component: {fileID: 827769743}
   m_Layer: 5
-  m_Name: Perso8
+  m_Name: Perso7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1588,7 +1588,7 @@ GameObject:
   - component: {fileID: 1196041580}
   - component: {fileID: 1196041582}
   m_Layer: 5
-  m_Name: Perso3
+  m_Name: Perso2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1765,16 +1765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a2f4cf2afb33894a936c1d377909954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Players:
-  - {fileID: 1680523268}
-  - {fileID: 1393603542}
-  - {fileID: 1196041578}
-  - {fileID: 1256361201}
-  - {fileID: 1303331924}
-  - {fileID: 1729001477}
-  - {fileID: 1963918674}
-  - {fileID: 827769739}
-  - {fileID: 823358235}
+  NumberOfPlayers: 9
   isPlayerSelected: 
   SelectedPlayers:
   - {fileID: 1554651700}
@@ -1878,7 +1869,7 @@ GameObject:
   - component: {fileID: 1256361203}
   - component: {fileID: 1256361205}
   m_Layer: 5
-  m_Name: Perso4
+  m_Name: Perso3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1965,7 +1956,7 @@ GameObject:
   - component: {fileID: 1303331926}
   - component: {fileID: 1303331928}
   m_Layer: 5
-  m_Name: Perso5
+  m_Name: Perso4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2196,7 +2187,7 @@ GameObject:
   - component: {fileID: 1393603544}
   - component: {fileID: 1393603546}
   m_Layer: 5
-  m_Name: Perso2
+  m_Name: Perso1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2346,6 +2337,46 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1401676489}
   m_CullTransparentMesh: 0
+--- !u!1 &1465682335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1465682337}
+  - component: {fileID: 1465682336}
+  m_Layer: 0
+  m_Name: GameMaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1465682336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1465682335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b1717f46dd2eed42b1c3408af066ce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1465682337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1465682335}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 688.9066, y: 333.2857, z: -9.377932}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1552706178
 GameObject:
   m_ObjectHideFlags: 0
@@ -2503,7 +2534,7 @@ GameObject:
   - component: {fileID: 1680523270}
   - component: {fileID: 1680523272}
   m_Layer: 5
-  m_Name: Perso1
+  m_Name: Perso0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2734,7 +2765,7 @@ GameObject:
   - component: {fileID: 1729001479}
   - component: {fileID: 1729001481}
   m_Layer: 5
-  m_Name: Perso6
+  m_Name: Perso5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2971,7 +3002,7 @@ GameObject:
   - component: {fileID: 1963918676}
   - component: {fileID: 1963918678}
   m_Layer: 5
-  m_Name: Perso7
+  m_Name: Perso6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

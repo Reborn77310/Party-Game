@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ChampionSelectManager : MonoBehaviour
 {
-    public GameObject[] Players;
+    public int NumberOfPlayers;
+    private static GameObject[] Players;
+
+
     public bool[] isPlayerSelected;
     public GameObject[] SelectedPlayers;
     public GameObject SelectionSquare;
@@ -15,6 +19,11 @@ public class ChampionSelectManager : MonoBehaviour
 
     void Awake()
     {
+        Players = new GameObject[NumberOfPlayers];
+        for (int i = 0; i < NumberOfPlayers; i++)
+        {
+            Players[i] = GameObject.Find("Perso" + i);
+        }
         isPlayerSelected = new bool[Players.Length];
     }
 
@@ -52,7 +61,7 @@ public class ChampionSelectManager : MonoBehaviour
         if (Input.GetButtonDown("A"))
         {
             var testActive = false;
-            
+
             for (int i = 0; i < SelectedPlayers.Length; i++)
             {
                 if (!SelectedPlayers[i].activeInHierarchy && !testActive && !isPlayerSelected[actualPlayerSelected])
@@ -84,5 +93,37 @@ public class ChampionSelectManager : MonoBehaviour
                 SelectedPlayers[i].SetActive(false);
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            GameMaster.OnChampionSelect = false;
+            var nombre = 0;
+            for (int i = 0; i < isPlayerSelected.Length; i++)
+            {
+                if (isPlayerSelected[i] && nombre == 0)
+                {
+                    GameMaster.PlayerOne = i;
+                    nombre++;
+                }
+                else if (isPlayerSelected[i] && nombre == 1)
+                {
+                    GameMaster.PlayerTwo = i;
+                    nombre++;
+                }
+                else if (isPlayerSelected[i] && nombre == 2)
+                {
+                    GameMaster.PlayerThree = i;
+                    nombre++;
+                }
+                else if (isPlayerSelected[i] && nombre == 3)
+                {
+                    GameMaster.PlayerFour = i;
+                    nombre++;
+                }
+
+            }
+            SceneManager.LoadScene("SampleScene");
+        }
+
     }
 }
