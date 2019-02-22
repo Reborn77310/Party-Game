@@ -5,15 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour
 {
-    public static int PlayerOne;
-    public static int PlayerTwo;
-    public static int PlayerThree;
-    public static int PlayerFour;
+    public static int PlayerOne = -1;
+    public static int PlayerTwo = -1;
+    public static int PlayerThree = -1;
+    public static int PlayerFour = -1;
 
     public static bool OnChampionSelect = true;
     public List<GameObject> Players;
     public GameObject[] PlayersActives = new GameObject[4];
 
+    public int NumberOfPlayers = 0;
     void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -32,25 +33,42 @@ public class GameMaster : MonoBehaviour
             {
                 Players.Add(child.gameObject);
             }
-            PlayersActives[0] = Players[PlayerOne];
-            PlayersActives[1] = Players[PlayerTwo];
-            PlayersActives[2] = Players[PlayerThree];
-            PlayersActives[3] = Players[PlayerFour];
+
+            if (PlayerOne >= 0)
+            {
+                PlayersActives[0] = Players[PlayerOne];
+            }
+
+            if (PlayerTwo >= 0)
+            {
+                PlayersActives[1] = Players[PlayerTwo];
+            }
+
+            if (PlayerThree >= 0)
+            {
+                PlayersActives[2] = Players[PlayerThree];
+            }
+
+            if (PlayerFour >= 0)
+            {
+                PlayersActives[3] = Players[PlayerFour];
+            }
 
             foreach (var go in PlayersActives)
             {
-                go.SetActive(true);
+                if (go != null)
+                {
+                    go.SetActive(true);
+                }
             }
+
+            NumberOfPlayers = GetComponent<ChampionSelectManager>().CompterLesJoueurs();
+
+            Destroy(GetComponent<Player1>());
+            Destroy(GetComponent<Player2>());
+            Destroy(GetComponent<Player3>());
+            Destroy(GetComponent<Player4>());
+            Destroy(GetComponent<ChampionSelectManager>());
         }
     }
-
-    void Update()
-    {
-
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            print(OnChampionSelect);
-        }
-    }
-
 }

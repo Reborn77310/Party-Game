@@ -66,6 +66,7 @@ public class Player4 : MonoBehaviour
             if (!championSelect.SelectedPlayers[playerNumber].activeInHierarchy &&
                 !championSelect.isPlayerSelected[actualPlayerSelected])
             {
+                GameMaster.PlayerFour = actualPlayerSelected;
                 championSelect.isPlayerSelected[actualPlayerSelected] = true;
                 championSelect.SelectedPlayers[playerNumber].SetActive(true);
 
@@ -83,6 +84,7 @@ public class Player4 : MonoBehaviour
         {
             if (championSelect.SelectedPlayers[playerNumber].activeInHierarchy && playerValider && !SelectionSquare.activeInHierarchy)
             {
+                GameMaster.PlayerFour = -1;
                 championSelect.isPlayerSelected[playerSelectedNumber] = false;
                 championSelect.SelectedPlayers[playerNumber].SetActive(false);
                 playerValider = false;

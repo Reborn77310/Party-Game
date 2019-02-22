@@ -12,9 +12,6 @@ public class ChampionSelectManager : MonoBehaviour
     public bool[] PlayerJoined = new bool[4];
     public bool[] isPlayerSelected;
     public GameObject[] SelectedPlayers;
-    [SerializeField] private int actualPlayerSelected = 0;
-
-    private bool leftAxisInUse = false;
 
     void Awake()
     {
@@ -30,34 +27,37 @@ public class ChampionSelectManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            GameMaster.OnChampionSelect = false;
-            var nombre = 0;
-            for (int i = 0; i < isPlayerSelected.Length; i++)
+            var test = CompterLesJoueurs();
+            if (test >= 2 && GameMaster.PlayerOne >= 0)
             {
-                if (isPlayerSelected[i] && nombre == 0)
-                {
-                    GameMaster.PlayerOne = i;
-                    nombre++;
-                }
-                else if (isPlayerSelected[i] && nombre == 1)
-                {
-                    GameMaster.PlayerTwo = i;
-                    nombre++;
-                }
-                else if (isPlayerSelected[i] && nombre == 2)
-                {
-                    GameMaster.PlayerThree = i;
-                    nombre++;
-                }
-                else if (isPlayerSelected[i] && nombre == 3)
-                {
-                    GameMaster.PlayerFour = i;
-                    nombre++;
-                }
+                GameMaster.OnChampionSelect = false;
+                SceneManager.LoadScene("SampleScene");
+            }       
+        }
+    }
 
-            }
-            SceneManager.LoadScene("SampleScene");
+    public int CompterLesJoueurs()
+    {
+        var numberOfPlayers = 0;
+        if (GameMaster.PlayerOne >= 0)
+        {
+            numberOfPlayers++;
         }
 
+        if (GameMaster.PlayerTwo >= 0)
+        {
+            numberOfPlayers++;
+        }
+
+        if (GameMaster.PlayerThree >= 0)
+        {
+            numberOfPlayers++;
+        }
+
+        if (GameMaster.PlayerFour >= 0)
+        {
+            numberOfPlayers++;
+        }
+        return numberOfPlayers;
     }
 }
