@@ -28,23 +28,6 @@ public class ChampionSelectManager : MonoBehaviour
 
     void Update()
     {
-        if (GamePad.GetButton(CButton.Start, PlayerIndex.One))
-        {
-            PlayerJoined[0] = true;
-        }
-        if (GamePad.GetButton(CButton.Start, PlayerIndex.Two))
-        {
-            PlayerJoined[1] = true;
-        }
-        if (GamePad.GetButton(CButton.Start, PlayerIndex.Three))
-        {
-            PlayerJoined[2] = true;
-        }
-        if (GamePad.GetButton(CButton.Start, PlayerIndex.Four))
-        {
-            PlayerJoined[3] = true;
-        }
-
         if (Input.GetKeyDown(KeyCode.A))
         {
             GameMaster.OnChampionSelect = false;
