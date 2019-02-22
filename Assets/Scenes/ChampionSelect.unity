@@ -683,12 +683,12 @@ GameObject:
   - component: {fileID: 432020390}
   - component: {fileID: 432020389}
   m_Layer: 5
-  m_Name: SelectionSquare
+  m_Name: SelectionSquarePlayerOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &432020389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1136,6 +1136,7 @@ RectTransform:
   - {fileID: 1710505279}
   - {fileID: 2065656658}
   - {fileID: 432020391}
+  - {fileID: 1898068695}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1403,8 +1404,8 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: L_XAxis
-  m_VerticalAxis: L_YAxis
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
@@ -1738,55 +1739,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1232173503}
   m_CullTransparentMesh: 0
---- !u!1 &1234208713
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1234208715}
-  - component: {fileID: 1234208714}
-  m_Layer: 0
-  m_Name: ChampionSelectManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1234208714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1234208713}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a2f4cf2afb33894a936c1d377909954, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NumberOfPlayers: 9
-  isPlayerSelected: 
-  SelectedPlayers:
-  - {fileID: 1554651700}
-  - {fileID: 1164118396}
-  - {fileID: 1249775112}
-  - {fileID: 198867189}
-  SelectionSquare: {fileID: 432020388}
-  actualPlayerSelected: 0
---- !u!4 &1234208715
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1234208713}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1108.6248, y: 93.4773, z: -0.8451595}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1249775112
 GameObject:
   m_ObjectHideFlags: 0
@@ -2346,6 +2298,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1465682337}
   - component: {fileID: 1465682336}
+  - component: {fileID: 1465682339}
+  - component: {fileID: 1465682338}
+  - component: {fileID: 1465682340}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -2364,6 +2319,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1717f46dd2eed42b1c3408af066ce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Players: []
+  PlayersActives:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1465682337
 Transform:
   m_ObjectHideFlags: 0
@@ -2375,8 +2336,53 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1465682338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1465682335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bee899fe71996ac4bb3d02069ba1cc32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectionSquare: {fileID: 432020388}
+--- !u!114 &1465682339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1465682335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2f4cf2afb33894a936c1d377909954, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NumberOfPlayers: 9
+  Players: []
+  PlayerJoined: 00000000
+  isPlayerSelected: 
+  SelectedPlayers:
+  - {fileID: 1554651700}
+  - {fileID: 1164118396}
+  - {fileID: 1249775112}
+  - {fileID: 198867189}
+  actualPlayerSelected: 0
+--- !u!114 &1465682340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1465682335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed4784600ea1fdb4ebc1172af277c66f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectionSquare: {fileID: 1898068694}
 --- !u!1 &1552706178
 GameObject:
   m_ObjectHideFlags: 0
@@ -2914,6 +2920,75 @@ CanvasRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1819041212}
+  m_CullTransparentMesh: 0
+--- !u!1 &1898068694
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1898068695}
+  - component: {fileID: 1898068697}
+  - component: {fileID: 1898068696}
+  m_Layer: 5
+  m_Name: SelectionSquarePlayerTwo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1898068695
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1898068694}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 738610726}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -496, y: -172.20001}
+  m_SizeDelta: {x: 105, y: 105}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1898068696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1898068694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: cb8831e7dfdbe6e4f8af3fb7176baf36, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1898068697
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1898068694}
   m_CullTransparentMesh: 0
 --- !u!1 &1949591413
 GameObject:

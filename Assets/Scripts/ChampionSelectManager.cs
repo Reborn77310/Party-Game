@@ -7,12 +7,11 @@ using UnityEngine.SceneManagement;
 public class ChampionSelectManager : MonoBehaviour
 {
     public int NumberOfPlayers;
-    private static GameObject[] Players;
+    public GameObject[] Players;
 
-
+    public bool[] PlayerJoined = new bool[4];
     public bool[] isPlayerSelected;
     public GameObject[] SelectedPlayers;
-    public GameObject SelectionSquare;
     [SerializeField] private int actualPlayerSelected = 0;
 
     private bool leftAxisInUse = false;
@@ -29,69 +28,21 @@ public class ChampionSelectManager : MonoBehaviour
 
     void Update()
     {
-        var horizontal = Input.GetAxisRaw("L_XAxis");
-        if (Mathf.Abs(horizontal) > 0.2f)
+        if (GamePad.GetButton(CButton.Start, PlayerIndex.One))
         {
-            if (!leftAxisInUse)
-            {
-                if (horizontal < 0.2f)
-                {
-                    if (actualPlayerSelected != 0)
-                    {
-                        actualPlayerSelected--;
-                        leftAxisInUse = true;
-                    }
-                }
-                else if (horizontal > 0.2f)
-                {
-                    if (actualPlayerSelected != 8)
-                    {
-                        actualPlayerSelected++;
-                        leftAxisInUse = true;
-                    }
-                }
-            }
-            SelectionSquare.transform.position = Players[actualPlayerSelected].transform.position;
+            PlayerJoined[0] = true;
         }
-        else if (leftAxisInUse)
+        if (GamePad.GetButton(CButton.Start, PlayerIndex.Two))
         {
-            leftAxisInUse = false;
+            PlayerJoined[1] = true;
         }
-
-        if (Input.GetButtonDown("A"))
+        if (GamePad.GetButton(CButton.Start, PlayerIndex.Three))
         {
-            var testActive = false;
-
-            for (int i = 0; i < SelectedPlayers.Length; i++)
-            {
-                if (!SelectedPlayers[i].activeInHierarchy && !testActive && !isPlayerSelected[actualPlayerSelected])
-                {
-                    testActive = true;
-                    isPlayerSelected[actualPlayerSelected] = true;
-                    Players[actualPlayerSelected].GetComponent<CharacterInfo>().usedImage.SetActive(true);
-
-                    SelectedPlayers[i].GetComponent<Image>().sprite = Players[actualPlayerSelected].GetComponent<CharacterInfo>().character.CharacterSprite;
-                    SelectedPlayers[i].transform.GetChild(0).GetComponent<Text>().text = Players[actualPlayerSelected].GetComponent<CharacterInfo>().character.Name;
-                    SelectedPlayers[i].SetActive(true);
-                }
-            }
+            PlayerJoined[2] = true;
         }
-
-        if (Input.GetButtonDown("B"))
+        if (GamePad.GetButton(CButton.Start, PlayerIndex.Four))
         {
-            for (int i = 0; i < isPlayerSelected.Length; i++)
-            {
-                if (isPlayerSelected[i])
-                {
-                    Players[i].GetComponent<CharacterInfo>().usedImage.SetActive(false);
-                    isPlayerSelected[i] = false;
-                }
-            }
-
-            for (int i = 0; i < SelectedPlayers.Length; i++)
-            {
-                SelectedPlayers[i].SetActive(false);
-            }
+            PlayerJoined[3] = true;
         }
 
         if (Input.GetKeyDown(KeyCode.A))
