@@ -54,7 +54,9 @@ public class Player1 : MonoBehaviour
                     }
                 }
             }
-            SelectionSquare.transform.position = championSelect.Players[actualPlayerSelected].transform.position;
+
+            var yPosition = SelectionSquare.transform.position.y;
+            SelectionSquare.transform.position = new Vector3(championSelect.Players[actualPlayerSelected].transform.position.x, yPosition, championSelect.Players[actualPlayerSelected].transform.position.z);
         }
         else if (leftAxisInUse)
         {
@@ -67,6 +69,7 @@ public class Player1 : MonoBehaviour
                 !championSelect.isPlayerSelected[actualPlayerSelected])
             {
                 GameMaster.PlayerOne = actualPlayerSelected;
+                
                 championSelect.isPlayerSelected[actualPlayerSelected] = true;
                 championSelect.SelectedPlayers[playerNumber].SetActive(true);
 
@@ -75,6 +78,8 @@ public class Player1 : MonoBehaviour
                 selectedPlayers[playerNumber].SetActive(true);
 
                 playerSelectedNumber = actualPlayerSelected;
+                championSelect.Players[playerSelectedNumber].GetComponent<CharacterInfo>().usedImage.SetActive(true);
+
                 playerValider = true;
                 SelectionSquare.SetActive(false);
             }
@@ -87,6 +92,7 @@ public class Player1 : MonoBehaviour
                 GameMaster.PlayerOne = -1;
                 championSelect.isPlayerSelected[playerSelectedNumber] = false;
                 championSelect.SelectedPlayers[playerNumber].SetActive(false);
+                championSelect.Players[playerSelectedNumber].GetComponent<CharacterInfo>().usedImage.SetActive(false);
                 playerValider = false;
                 SelectionSquare.SetActive(true);
             }

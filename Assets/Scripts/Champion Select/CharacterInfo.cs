@@ -16,6 +16,7 @@ public class CharacterInfo : MonoBehaviour
         usedImage = transform.GetChild(1).gameObject;
 
         myImage.sprite = character.CharacterSprite;
+        //myImage.sprite = Resources.Load("Assets/Resources/Sprites/Personnages" + myName) as Sprite;
         myName.GetComponent<Text>().text = character.Name;
     }
 }
